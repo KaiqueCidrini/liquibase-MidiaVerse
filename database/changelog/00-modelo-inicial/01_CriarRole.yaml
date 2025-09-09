@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+    id: 1
+    author: kaique.cidrini
+    context: local
+    preConditions:
+       onFail: MARK_RAN
+       sqlCheck:
+          expectedResult: 0
+          sql: SELECT COUNT(1) FROM pg_roles WHERE rolname = 'midiaverse_user'
+    changes:
+      - sql:
+        comment: Criar role midiaverse_user
+        endDelimiter: ;
+        splitStatements: true
+        sql: CREATE ROLE midiaverse_user WITH SUPERUSER CREATEDB CREATEROLE LOGIN ENCRYPTED PASSWORD 'pikachu123';
+        

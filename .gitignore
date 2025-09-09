@@ -1,0 +1,106 @@
+# ==============================
+# Sistema/OS
+# ==============================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ==============================
+# IDEs/Editors
+# ==============================
+.vscode/
+.idea/
+*.iml
+*.suo
+*.njsproj
+*.sln
+.history/
+*.swp
+*.swo
+*.orig
+
+# ==============================
+# Logs e temporários
+# ==============================
+*.log
+logs/
+.tmp/
+tmp/
+.temp/
+temp/
+*.tmp
+*.bak
+*.backup
+
+# ==============================
+# Builds/Artefatos
+# ==============================
+dist/
+build/
+out/
+coverage/
+reports/
+node_modules/
+
+# ==============================
+# Variáveis de ambiente e segredos
+# ==============================
+.env
+.env.*
+!.env.example
+*.local
+*.secret
+.envrc
+secrets/
+config/secrets/*
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+*.keystore
+*.jks
+*.kdbx
+*.gpg
+*.asc
+
+# ==============================
+# Liquibase (propriedades/artefatos sensíveis)
+# ==============================
+liquibase.properties
+liquibase.local.properties
+liquibase-*.properties
+liquibase*.log
+liquibase-output*.sql
+rollback-*.sql
+# resultados de diff ou update gravados localmente
+**/*-output*.sql
+
+# ==============================
+# Docker
+# ==============================
+docker-compose.override.yml
+.docker/
+docker-data/
+volumes/
+# Arquivos de env específicos de docker (se usados)
+*.env.docker
+
+# ==============================
+# Ambientes virtuais (python, etc.)
+# ==============================
+.venv/
+venv/
+
+# ==============================
+# Dumps/Bancos locais (evitar vazar dados)
+# ==============================
+*.dump
+*.db
+*.sqlite
+*.sqlite3
+# Evite ignorar *.sql globalmente para não ocultar migrações versionadas
+# Crie pastas dedicadas a dumps, se necessário, e ignore-as aqui:
+# dumps/
+# backup/
+
