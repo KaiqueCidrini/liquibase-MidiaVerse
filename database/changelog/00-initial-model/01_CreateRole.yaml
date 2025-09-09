@@ -10,8 +10,8 @@ databaseChangeLog:
           sql: SELECT COUNT(1) FROM pg_roles WHERE rolname = 'midiaverse_user'
     changes:
       - sql:
-        comment: Criar role midiaverse_user
+        comment: Create midiaverse_user role
         endDelimiter: ;
         splitStatements: true
-        sql: CREATE ROLE midiaverse_user WITH SUPERUSER CREATEDB CREATEROLE LOGIN ENCRYPTED PASSWORD 'pikachu123';
+        sql: CREATE ROLE midiaverse_user WITH SUPERUSER CREATEDB CREATEROLE LOGIN ENCRYPTED PASSWORD 'Postgres123?';
         
