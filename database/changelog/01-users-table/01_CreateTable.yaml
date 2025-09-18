@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01-create-users-table
+      author: kaique.cidrini
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          - tableExists:
+              tableName: users
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: user_id
+                  type: UUID
+                  defaultValueComputed: "gen_random_uuid()"
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: hash_password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: creation_date
+                  type: timestamp
+              - column:
+                  name: avatar_url
+                  type: varchar(255)
+              - column:
+                  name: bio
+                  type: text
+              - column:
+                  name: last_login
+                  type: timestamp

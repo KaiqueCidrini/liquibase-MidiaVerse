@@ -1,0 +1,62 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01-create-listas-usuarios-table
+      author: kaique.cidrini
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          - tableExists:
+              tableName: listas_usuarios
+      changes:
+        - createTable:
+            tableName: listas_usuarios
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: usuario_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_listas_usuarios_usuario
+                    referencedTableName: usuarios
+                    referencedColumnNames: id
+              - column:
+                  name: midia_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_listas_usuarios_midia
+                    referencedTableName: midias
+                    referencedColumnNames: id
+              - column:
+                  name: status
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: nota
+                  type: int
+              - column:
+                  name: progresso
+                  type: int
+                  defaultValueNumeric: 0
+              - column:
+                  name: data_inicio
+                  type: date
+              - column:
+                  name: data_fim
+                  type: date
+              - column:
+                  name: comentario
+                  type: text
+              - column:
+                  name: data_atualizacao
+                  type: timestamp
+                  defaultValueComputed: now()
+

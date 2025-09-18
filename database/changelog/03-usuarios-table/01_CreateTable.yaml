@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01-create-usuarios-table
+      author: kaique.cidrini
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          - tableExists:
+              tableName: usuarios
+      changes:
+        - createTable:
+            tableName: usuarios
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: nome_usuario
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: email
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: senha_hash
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: data_criacao
+                  type: timestamp
+                  defaultValueComputed: now()
+              - column:
+                  name: avatar_url
+                  type: varchar(255)
+              - column:
+                  name: bio
+                  type: text
+              - column:
+                  name: ultimo_login
+                  type: timestamp
+

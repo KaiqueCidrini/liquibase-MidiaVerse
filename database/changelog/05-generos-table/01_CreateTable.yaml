@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01-create-generos-table
+      author: kaique.cidrini
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          - tableExists:
+              tableName: generos
+      changes:
+        - createTable:
+            tableName: generos
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: nome
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: descricao
+                  type: text
+

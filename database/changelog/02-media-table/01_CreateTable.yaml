@@ -1,0 +1,45 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01-create-media-table
+      author: kaique.cidrini
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          - tableExists:
+              tableName: media
+      changes:
+        - createTable:
+            tableName: media
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  defaultValueComputed: "gen_random_uuid()"
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: synopsis
+                  type: text
+              - column:
+                  name: type
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: cover_url
+                  type: varchar(255)
+              - column:
+                  name: release_date
+                  type: date
+              - column:
+                  name: studio
+                  type: varchar(100)
+              - column:
+                  name: status
+                  type: varchar(20)
