@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 01-create-users-table
+      id: 03-create-users-table
       author: kaique.cidrini
       preConditions:
         onFail: MARK_RAN
@@ -15,6 +15,7 @@ databaseChangeLog:
                   name: user_id
                   type: UUID
                   defaultValueComputed: "gen_random_uuid()"
+                  autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false

@@ -25,9 +25,9 @@ services:
         condition: service_healthy
     restart: on-failure
     command: >
-      --url=jdbc:postgresql://postgres-midiaverse:5432/midiaverse --changeLogFile=/changelog/master.yaml --username=postgres --password="Postgres123?" --contexts=local update
+      --url=jdbc:postgresql://postgres-midiaverse:5432/midiaverse --changeLogFile=master.yaml --username=postgres --password="Postgres123?" --contexts=local update
     volumes:
-      - ./database/changelog:/var/changelog/master.yaml
+      - ./database/changelog:/var/changelog
     working_dir: /var/changelog
     links:
       - postgres-midiaverse
@@ -37,5 +37,3 @@ services:
 networks:
   midiaverse-network:
     driver: bridge
-
-

@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 05-create-genres-table
+      author: kaique.cidrini
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          - tableExists:
+              tableName: genres
+      changes:
+        - createTable:
+            tableName: genres
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  defaultValueComputed: "gen_random_uuid()"
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: description
+                  type: text

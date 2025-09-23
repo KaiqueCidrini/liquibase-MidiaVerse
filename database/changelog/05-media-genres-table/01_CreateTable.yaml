@@ -1,30 +1,27 @@
 databaseChangeLog:
   - changeSet:
-      id: 01-create-generos-table
+      id: 07-create-media-genres-table
       author: kaique.cidrini
       preConditions:
         onFail: MARK_RAN
         not:
           - tableExists:
-              tableName: generos
+              tableName: media_genres
       changes:
         - createTable:
-            tableName: generos
+            tableName: media_genres
             columns:
               - column:
-                  name: id
-                  type: int
+                  name: media_id
+                  type: UUID
+                  defaultValueComputed: "gen_random_uuid()"
                   autoIncrement: true
                   constraints:
-                    primaryKey: true
                     nullable: false
+                    references: media(id)
               - column:
-                  name: nome
-                  type: varchar(50)
+                  name: genre_id
+                  type: UUID
                   constraints:
                     nullable: false
-                    unique: true
-              - column:
-                  name: descricao
-                  type: text
-
+                    references: genres(id)

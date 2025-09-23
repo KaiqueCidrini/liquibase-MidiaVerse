@@ -1,62 +1,60 @@
 databaseChangeLog:
   - changeSet:
-      id: 01-create-listas-usuarios-table
+      id: 06-create-user-lists-table
       author: kaique.cidrini
       preConditions:
         onFail: MARK_RAN
         not:
           - tableExists:
-              tableName: listas_usuarios
+              tableName: user_lists
       changes:
         - createTable:
-            tableName: listas_usuarios
+            tableName: user_lists
             columns:
               - column:
                   name: id
-                  type: int
+                  type: UUID
+                  defaultValueComputed: "gen_random_uuid()"
                   autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: usuario_id
-                  type: int
+                  name: user_id
+                  type: UUID
                   constraints:
                     nullable: false
-                    foreignKeyName: fk_listas_usuarios_usuario
-                    referencedTableName: usuarios
-                    referencedColumnNames: id
+                    references: users(user_id)
+                    foreignKeyName: fk_user_lists_user
               - column:
-                  name: midia_id
-                  type: int
+                  name: media_id
+                  type: UUID
                   constraints:
                     nullable: false
-                    foreignKeyName: fk_listas_usuarios_midia
-                    referencedTableName: midias
-                    referencedColumnNames: id
+                    references: media(id)
+                    foreignKeyName: fk_user_lists_media
               - column:
                   name: status
                   type: varchar(20)
                   constraints:
                     nullable: false
               - column:
-                  name: nota
+                  name: rating
                   type: int
               - column:
-                  name: progresso
+                  name: progress
                   type: int
                   defaultValueNumeric: 0
               - column:
-                  name: data_inicio
+                  name: start_date
                   type: date
               - column:
-                  name: data_fim
+                  name: end_date
                   type: date
               - column:
-                  name: comentario
+                  name: comment
                   type: text
               - column:
-                  name: data_atualizacao
+                  name: updated_at
                   type: timestamp
                   defaultValueComputed: now()
-
