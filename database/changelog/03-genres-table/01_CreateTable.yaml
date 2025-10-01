@@ -3,10 +3,10 @@ databaseChangeLog:
       id: 05-create-genres-table
       author: kaique.cidrini
       preConditions:
-        onFail: MARK_RAN
-        not:
-          - tableExists:
-              tableName: genres
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: genres
       changes:
         - createTable:
             tableName: genres
@@ -15,7 +15,6 @@ databaseChangeLog:
                   name: id
                   type: UUID
                   defaultValueComputed: "gen_random_uuid()"
-                  autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false

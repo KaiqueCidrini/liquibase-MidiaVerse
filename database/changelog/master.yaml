@@ -1,15 +1,22 @@
 databaseChangeLog:
   - include:
       file: 00-initial-model/01_CreateRole.yaml
+      relativeToChangelogFile: true
   - include:
       file: 00-initial-model/02_Extensions.yaml
+      relativeToChangelogFile: true
   - include:
       file: 01-users-table/01_CreateTable.yaml
+      relativeToChangelogFile: true
   - include:
       file: 02-media-table/01_CreateTable.yaml
+      relativeToChangelogFile: true
   - include:
       file: 03-genres-table/01_CreateTable.yaml
+      relativeToChangelogFile: true
   - include:
       file: 04-user-lists-table/01_CreateTable.yaml
+      relativeToChangelogFile: true
   - include:
       file: 05-media-genres-table/01_CreateTable.yaml
+    relativeToChangelogFile: true

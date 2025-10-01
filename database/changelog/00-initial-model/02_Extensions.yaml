@@ -4,11 +4,11 @@ databaseChangeLog:
       author: kaique.cidrini
       context: local
       preConditions:
-        onFail: MARK_RAN
-        not:
-          sqlCheck:
-            expectedResult: 1
-            sql: SELECT COUNT(1) FROM pg_extension WHERE extname = 'pgcrypto';
+        - onFail: MARK_RAN
+        - not:
+            - sqlCheck:
+                expectedResult: 1
+                sql: SELECT COUNT(1) FROM pg_extension WHERE extname = 'pgcrypto';
       changes:
         - sql:
             comment: Habilitar extensão pgcrypto para geração de UUIDs

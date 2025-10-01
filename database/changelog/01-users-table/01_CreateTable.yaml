@@ -3,10 +3,10 @@ databaseChangeLog:
       id: 03-create-users-table
       author: kaique.cidrini
       preConditions:
-        onFail: MARK_RAN
-        not:
-          - tableExists:
-              tableName: users
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: users
       changes:
         - createTable:
             tableName: users
@@ -15,7 +15,6 @@ databaseChangeLog:
                   name: user_id
                   type: UUID
                   defaultValueComputed: "gen_random_uuid()"
-                  autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false

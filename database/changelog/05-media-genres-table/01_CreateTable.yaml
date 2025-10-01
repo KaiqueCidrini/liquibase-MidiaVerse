@@ -3,10 +3,10 @@ databaseChangeLog:
       id: 07-create-media-genres-table
       author: kaique.cidrini
       preConditions:
-        onFail: MARK_RAN
-        not:
-          - tableExists:
-              tableName: media_genres
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: media_genres
       changes:
         - createTable:
             tableName: media_genres
@@ -14,14 +14,14 @@ databaseChangeLog:
               - column:
                   name: media_id
                   type: UUID
-                  defaultValueComputed: "gen_random_uuid()"
-                  autoIncrement: true
                   constraints:
                     nullable: false
                     references: media(id)
+                    foreignKeyName: fk_media_genres_media
               - column:
                   name: genre_id
                   type: UUID
                   constraints:
                     nullable: false
                     references: genres(id)
+                    foreignKeyName: fk_media_genres_genre

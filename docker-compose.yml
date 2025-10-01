@@ -1,33 +1,34 @@
 services:
-  postgres-midiaverse:
+  postgres-mediaverse:
     image: postgres:latest
     container_name: postgres-mediaverse
     environment:
-      POSTGRES_DB: midiaverse
+      POSTGRES_DB: mediaverse
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: "Postgres123"
     ports:
       - "54320:5432"
     networks:
-      - midiaverse-network
+      - mediaverse-network
 
   liquibase:
     image: liquibase/liquibase:latest
-    container_name: liquibase-midiaverse
+    container_name: liquibase-mediaverse
     depends_on:
-      - postgres-midiaverse
+      - postgres-mediaverse
+    working_dir: /liquibase/changelog
     volumes:
       - ./database/changelog:/liquibase/changelog
     command:
-      - --url=jdbc:postgresql://postgres-midiaverse:5432/midiaverse
-      - --changeLogFile=/liquibase/changelog/master.yaml
-      - --searchPath=/liquibase/changelog
+      - --url=jdbc:postgresql://postgres-mediaverse:5432/mediaverse
+      - --changelog-file=master.yaml        # use '=' no mesmo item
+      - --search-path=/liquibase/changelog  # idem
       - --username=postgres
       - --password=Postgres123
       - update
     networks:
-      - midiaverse-network
-
+      - mediaverse-network
+ 
 networks:
-  midiaverse-network:
+  mediaverse-network:
     driver: bridge
