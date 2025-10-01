@@ -12,7 +12,7 @@ Observação: Para rodar este projeto, apenas o Docker Desktop é estritamente n
 ### Clonar o repositório
 ```powershell
 git clone https://github.com/KaiqueCidrini/liquibase-mediaverse.git
-cd liquibase-MidiaVerse
+cd liquibase-mediaverse
 ```
 
 ### Estrutura relevante
